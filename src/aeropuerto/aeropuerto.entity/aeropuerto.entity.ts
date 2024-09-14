@@ -1,5 +1,5 @@
-import { AerolineaEntity } from "src/aerolinea/aerolinea.entity/aerolinea.entity";
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { AerolineaEntity } from "../../aerolinea/aerolinea.entity/aerolinea.entity";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class AeropuertoEntity {
@@ -10,14 +10,15 @@ export class AeropuertoEntity {
     nombre: string;
 
     @Column()
-    descripcion: string;
+    codigo: string;
 
     @Column()
-    fechaFundacion: string;
+    pais: string;
 
     @Column()
-    paginaWeb: string;
+    ciudad: string;
 
-    @ManyToMany(() => AerolineaEntity, aerolinea => aerolinea.aeropuerto)
-    aerolinea: AerolineaEntity[];
+    @ManyToMany(() => AerolineaEntity, aerolinea => aerolinea.aeropuertos)
+    @JoinTable()
+    aerolineas: AerolineaEntity[];
 }
