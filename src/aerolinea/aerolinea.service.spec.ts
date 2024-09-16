@@ -11,6 +11,13 @@ describe('AerolineaService', () => {
   let repository: Repository<AerolineaEntity>;
   let aerolineasLista: AerolineaEntity[];
 
+  /*function formattedDate(date: Date): Date {
+    const anio = date.getFullYear();
+    const mes = String(date.getMonth() + 1).padStart(2, '0');
+    const dia = String(date.getDate()).padStart(2, '0');
+    return new Date(`${anio}-${mes}-${dia}`);
+  }*/
+
   const seedDatabase = async () => {
     repository.clear();
     aerolineasLista = [];
@@ -68,6 +75,9 @@ describe('AerolineaService', () => {
       paginaWeb: faker.internet.domainName(),
       aeropuertos: []
     }
+
+    console.log("Aerolinea", aerolinea);
+
     const nuevaAerolinea: AerolineaEntity = await service.create(aerolinea);
     expect(aerolinea).not.toBeNull();
  

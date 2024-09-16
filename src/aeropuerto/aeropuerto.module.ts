@@ -6,7 +6,7 @@ import { AerolineaModule } from 'src/aerolinea/aerolinea.module';
 import { AeropuertoController } from './aeropuerto.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([AeropuertoEntity]), AerolineaModule],
+  imports: [TypeOrmModule.forFeature([AeropuertoEntity])],
   providers: [AeropuertoService],
   controllers: [AeropuertoController]
 })

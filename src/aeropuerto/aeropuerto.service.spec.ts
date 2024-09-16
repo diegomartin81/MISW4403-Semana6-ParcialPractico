@@ -68,6 +68,9 @@ describe('AeropuertoService', () => {
       ciudad: faker.location.city(),
       aerolineas: []
     }
+
+    console.log("Aeropuerto", aeropuerto);
+
     const nuevoAeropuerto: AeropuertoEntity = await service.create(aeropuerto);
     expect(aeropuerto).not.toBeNull();
  

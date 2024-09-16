@@ -5,7 +5,7 @@ import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-erro
 import { AeropuertoDto } from './aeropuerto.dto';
 import { plainToInstance } from 'class-transformer';
 
-@Controller('aeropuertos')
+@Controller('airports')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class AeropuertoController {
     constructor(private readonly aeropuertoService: AeropuertoService){}
@@ -15,8 +15,8 @@ export class AeropuertoController {
       return await this.aeropuertoService.findAll();
     }
   
-    @Get(':aeropuertoId')
-    async findOne(@Param('aeropuertoId') aeropuertoId: string) {
+    @Get(':airportId')
+    async findOne(@Param('airportId') aeropuertoId: string) {
       return await this.aeropuertoService.findOne(aeropuertoId);
     }
   
@@ -26,15 +26,15 @@ export class AeropuertoController {
       return await this.aeropuertoService.create(aeropuerto);
     }
   
-    @Put(':aeropuertoId')
-    async update(@Param('aeropuertoId') aeropuertoId: string, @Body() aeropuertoDto: AeropuertoDto) {
+    @Put(':airportId')
+    async update(@Param('airportId') aeropuertoId: string, @Body() aeropuertoDto: AeropuertoDto) {
       const aeropuerto: AeropuertoEntity = plainToInstance(AeropuertoEntity, aeropuertoDto);
       return await this.aeropuertoService.update(aeropuertoId, aeropuerto);
     }
   
-    @Delete(':aeropuertoId')
+    @Delete(':airportId')
     @HttpCode(204)
-    async delete(@Param('aeropuertoId') aeropuertoId: string) {
+    async delete(@Param('airportId') aeropuertoId: string) {
       return await this.aeropuertoService.delete(aeropuertoId);
     }
 }

@@ -1,5 +1,6 @@
 import { AeropuertoEntity } from "../../aeropuerto/aeropuerto.entity/aeropuerto.entity";
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Type } from "class-transformer";
 
 @Entity()
 export class AerolineaEntity {
@@ -13,6 +14,7 @@ export class AerolineaEntity {
     descripcion: string;
 
     @Column()
+    @Type(() => Date)
     fechaFundacion: Date;
 
     @Column()

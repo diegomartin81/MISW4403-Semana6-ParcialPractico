@@ -5,7 +5,7 @@ import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-erro
 import { AerolineaDto } from './aerolinea.dto';
 import { plainToInstance } from 'class-transformer';
 
-@Controller('aerolineas')
+@Controller('airlines')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class AerolineaController {
     constructor(private readonly aerolineaService: AerolineaService){}
@@ -15,8 +15,8 @@ export class AerolineaController {
       return await this.aerolineaService.findAll();
     }
   
-    @Get(':aerolineaId')
-    async findOne(@Param('aerolineaId') aerolineaId: string) {
+    @Get(':airlineId')
+    async findOne(@Param('airlineId') aerolineaId: string) {
       return await this.aerolineaService.findOne(aerolineaId);
     }
   
@@ -26,15 +26,15 @@ export class AerolineaController {
       return await this.aerolineaService.create(aerolinea);
     }
   
-    @Put(':aerolineaId')
-    async update(@Param('aerolineaId') aerolineaId: string, @Body() aerolineaDto: AerolineaDto) {
+    @Put(':airlineId')
+    async update(@Param('airlineId') aerolineaId: string, @Body() aerolineaDto: AerolineaDto) {
       const aerolinea: AerolineaEntity = plainToInstance(AerolineaEntity, aerolineaDto);
       return await this.aerolineaService.update(aerolineaId, aerolinea);
     }
   
-    @Delete(':aerolineaId')
+    @Delete(':airlineId')
     @HttpCode(204)
-    async delete(@Param('aerolineaId') aerolineaId: string) {
+    async delete(@Param('airlineId') aerolineaId: string) {
       return await this.aerolineaService.delete(aerolineaId);
     }
 }

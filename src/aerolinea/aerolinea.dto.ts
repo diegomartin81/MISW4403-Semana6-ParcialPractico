@@ -1,4 +1,5 @@
 import { IsDate, IsNotEmpty, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
 export class AerolineaDto {
 
  @IsString()
@@ -11,6 +12,7 @@ export class AerolineaDto {
  
  @IsDate()
  @IsNotEmpty()
+ @Type(() => Date)
  readonly fechaFundacion: Date;
  
  @IsString()

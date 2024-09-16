@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AerolineaEntity } from './aerolinea.entity/aerolinea.entity';
 import { Repository } from 'typeorm';

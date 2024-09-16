@@ -5,35 +5,35 @@ import { plainToInstance } from 'class-transformer';
 import { AeropuertoEntity } from 'src/aeropuerto/aeropuerto.entity/aeropuerto.entity';
 import { AeropuertoDto } from 'src/aeropuerto/aeropuerto.dto';
 
-@Controller('airlines/:aerolineaId/airports')
+@Controller('airlines')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class CoberturaController {
     constructor(private readonly coberturaService: CoberturaService){}
 
-    @Post(':aerolineaId/aeropuertos/:aeropuertoId')
-    async addAirportToAirline(@Param('aerolineaId') aerolineaId: string, @Param('aeropuertoId') aeropuertoId: string){
+    @Post(':airlineId/airports/:airportId')
+    async addAirportToAirline(@Param('airlineId') aerolineaId: string, @Param('airportId') aeropuertoId: string){
        return await this.coberturaService.addAirportToAirline(aerolineaId, aeropuertoId);
     }
 
-    @Get(':aerolineaId/aeropuertos')
-    async findAirportsFromAirline(@Param('aerolineaId') aerolineaId: string){
+    @Get(':airlineId/airports')
+    async findAirportsFromAirline(@Param('airlineId') aerolineaId: string){
        return await this.coberturaService.findAirportsFromAirline(aerolineaId);
     }
 
-    @Get(':aerolineaId/aeropuertos/:aeropuertoId')
-    async findAirportFromAirline(@Param('aerolineaId') aerolineaId: string, @Param('aeropuertoId') aeropuertoId: string){
+    @Get(':airlineId/airports/:airportId')
+    async findAirportFromAirline(@Param('airlineId') aerolineaId: string, @Param('airportId') aeropuertoId: string){
        return await this.coberturaService.findAirportFromAirline(aerolineaId, aeropuertoId);
     }
 
-    @Put(':aerolineaId/aeropuertos')
-    async updateAirportsFromAirline(@Body() aeropuertoDto: AeropuertoDto[], @Param('aerolineaId') aerolineaId: string){
+    @Put(':airlineId/airports')
+    async updateAirportsFromAirline(@Body() aeropuertoDto: AeropuertoDto[], @Param('airlineId') aerolineaId: string){
        const aeropuertos = plainToInstance(AeropuertoEntity, aeropuertoDto)
        return await this.coberturaService.updateAirportsFromAirline(aerolineaId, aeropuertos);
     }
 
-    @Delete(':aerolineaId/aeropuertos/:aeropuertoId')
+    @Delete(':airlineId/airports/:airportId')
     @HttpCode(204)
-    async deleteAirportFromAirline(@Param('aerolineaId') aerolineaId: string, @Param('aeropuertoId') aeropuertoId: string){
+    async deleteAirportFromAirline(@Param('airlineId') aerolineaId: string, @Param('airportId') aeropuertoId: string){
        return await this.coberturaService.deleteAirportFromAirline(aerolineaId, aeropuertoId);
     }
 }
